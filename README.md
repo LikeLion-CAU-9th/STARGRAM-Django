@@ -1,6 +1,6 @@
 <div align="center">
 
-![header](https://capsule-render.vercel.app/api?type=egg&color=gradient&height=300&section=header&text=STARGRAM&fontAlignY=40&fontSize=90&desc=중커톤%20우리가%20부순다❤️‍🔥&descAlignY=65&animation=twinkling)
+![header](https://capsule-render.vercel.app/api?type=egg&color=gradient&height=300&section=header&text=STARGRAM&fontAlignY=40&fontSize=90&desc=중커톤.%20우리가.%20부순다.❤️‍🔥&descAlignY=65&animation=twinkling)
 
 </div>
 
