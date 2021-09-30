@@ -5,14 +5,24 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+  <!-- END-OF-FONT -->
+  <!-- StyleSheet -->
   <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!-- END-OF-StyleSheet -->
   {% block header %}
   <!-- Need a title -->
   {% endblock %}
 </head>
 <body>
   <section class="rendering-container">
+    <nav>
+      <span class="nav-title">STARGRAM</span>
+    </nav>
     {% block content %}
       <!-- Content of each page -->
     {% endblock %}
