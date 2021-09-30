@@ -1,0 +1,11 @@
+.starfall-screen {
+  overflow: hidden;
+}
+
+.kakao-login-btn {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  bottom: 220px;
+  transform: translate(-50%, 0);
+}
