@@ -7,17 +7,18 @@ function init() {
   camera.rotation.x = Math.PI/2;
 
   renderer = new THREE.WebGLRenderer();
+  document.querySelector('.starfall-screen').style.height = 'calc(100vh - 75px)'; 
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.querySelector('.starfall-screen').appendChild(renderer.domElement);
   vertices = [];
-  for(let i=0; i<6000; i++) {
+  for(let i=0; i<4000; i++) {
     star = new THREE.Vector3(
       Math.random() * 600 - 300,
       Math.random() * 600 - 300,
       Math.random() * 600 - 300
     );
     star.velocity = 0;
-    star.acceleration = 0.02;
+    star.acceleration = 0.001;
     vertices.push(star);
   }
   starGeo = new THREE.BufferGeometry().setFromPoints(vertices);

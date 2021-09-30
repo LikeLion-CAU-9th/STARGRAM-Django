@@ -18,3 +18,7 @@ nav {
   font-size: 26px;
   letter-spacing: 3px;
 }
+
+.starfall-screen {
+  overflow: hidden;
+}
