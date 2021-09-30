@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
-
+{% load static %}
 <!-- Header -->
 {% block header %}
 <title>intro</title>
+<script src="{% static 'js/three.min.js' %}"></script>
+<script src="{% static 'js/starfall.js' %}"></script>
 {% endblock %}
 
 <!-- Body -->
 {% block contents %}
-
+<div class="starfall-screen">
+</div>
 {% endblock %}
