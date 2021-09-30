@@ -9,3 +9,16 @@
   bottom: 220px;
   transform: translate(-50%, 0);
 }
+
+.intro-text {
+  position: absolute;
+  width: 100%;
+  top: 46%;
+  transform: translate(0, -50%);
+  text-align: center;
+}
+
+.intro-text p {
+  font-size: 16px;
+  line-height: 30px;
+}

@@ -5,11 +5,20 @@
 <title>intro</title>
 <script src="{% static 'js/three.min.js' %}"></script>
 <script src="{% static 'js/starfall.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/intro.css' %}">
 {% endblock %}
 
 <!-- Body -->
 {% block contents %}
 <div class="starfall-screen">
+  <div class="intro-text">
+    <h1>나의 추억 별자리는?</h1><br>
+    <p>
+      여러분의 2021을 별자리로 만들어 기억해 보세요!<br>
+      특별한 여행, 특별한 장소를 기록하고 공유하는<br>
+      자신만의 링크를 만들어 보아요~
+    </p>
+  </div>
   <div class="kakao-login-btn">
     <img src="{% static 'images/kakao-login.png' %}">
   </div>
