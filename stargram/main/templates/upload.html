@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+<!-- Header -->
+{% block header %}
+<title>upload</title>
+<script src="{% static 'js/three.min.js' %}"></script>
+<script src="{% static 'js/starfall.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/intro.css' %}">
+{% endblock %}
+
+<!-- Body -->
+{% block contents %}
+<div class="starfall-screen">
+  <div class="intro-text">
+    <div class="intro-title">사진 업로드</div><br>
+
+    <form action="#" method="post" enctype="multipart/form-data">
+      {%csrf_token%}
+      <p>여행 날짜 : <input type="date" name="date"><input type="date" name="date"></p>
+      <p>여행지 : <input type="text" name="place"></p>
+      <p><input type="file" name="image"></p>
+      <p>한줄 소감 : <input type="text" name="impression"></p>
+      <br>
+      <button type="submit">submit</button>
+  </form>
+
+  </div>
+  
+</div>
+{% endblock %}
