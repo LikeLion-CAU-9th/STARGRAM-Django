@@ -3,6 +3,7 @@ from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 import json, os, requests
 from django.core.exceptions import ImproperlyConfigured
+from .models import User_info
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,5 +43,33 @@ def KakaoSignInCallback(request):
   token_response = requests.post(kakao_token_api, data=data)
   access_token = token_response.json().get('access_token')
   user_info_response = requests.get('https://kapi.kakao.com/v2/user/me', headers={"Authorization": f'Bearer {access_token}'})
+  user_info_json = user_info_response.json()
   
-  return JsonResponse({"user_info": user_info_response.json()})
+  user_data = {
+    'id': '',
+    'email': '',
+    'nickname': ''
+  }
+  
+  if 'id' in user_info_json:
+    kakao_id = user_info_json['id']
+    request.session['kakao_id'] = kakao_id
+    user_data['id'] = kakao_id
+    
+  if 'kakao_account' in user_info_json:
+    if 'email' in user_info_json['kakao_account']:
+      user_data['email'] = user_info_json['kakao_account']['email']
+    if 'nickname' in user_info_json['kakao_account']['profile']:
+      user_data['nickname'] = user_info_json['kakao_account']['profile']['nickname']
+
+  if isNewface(request, user_data['id']):
+    User_info.objects.create(kakao_id=user_data['id'], email=user_data['email'], nickname=user_data['nickname']) 
+    
+  return redirect('intro')
+
+
+def isNewface(request, id):
+  user_qs = User_info.objects.filter(kakao_id=id)
+  if len(user_qs) == 0:
+    return True
+  return False
