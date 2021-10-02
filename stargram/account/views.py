@@ -3,6 +3,7 @@ from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 import json, os, requests
 from django.core.exceptions import ImproperlyConfigured
+from .models import User_info
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -45,7 +46,9 @@ def KakaoSignInCallback(request):
   user_info_json = user_info_response.json()
   
   user_data = {
-    # Dict type data
+    'id': '',
+    'email': '',
+    'nickname': ''
   }
   
   if 'id' in user_info_json:
@@ -58,7 +61,15 @@ def KakaoSignInCallback(request):
       user_data['email'] = user_info_json['kakao_account']['email']
     if 'nickname' in user_info_json['kakao_account']['profile']:
       user_data['nickname'] = user_info_json['kakao_account']['profile']['nickname']
-      
-  print(user_data)
+
+  if isNewface(request, user_data['id']):
+    User_info.objects.create(kakao_id=user_data['id'], email=user_data['email'], nickname=user_data['nickname']) 
     
-  return JsonResponse({"user_info": user_info_response.json()})
+  return redirect('intro')
+
+
+def isNewface(request, id):
+  user_qs = User_info.objects.filter(kakao_id=id)
+  if len(user_qs) == 0:
+    return True
+  return False
