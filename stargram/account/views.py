@@ -42,5 +42,23 @@ def KakaoSignInCallback(request):
   token_response = requests.post(kakao_token_api, data=data)
   access_token = token_response.json().get('access_token')
   user_info_response = requests.get('https://kapi.kakao.com/v2/user/me', headers={"Authorization": f'Bearer {access_token}'})
+  user_info_json = user_info_response.json()
   
+  user_data = {
+    # Dict type data
+  }
+  
+  if 'id' in user_info_json:
+    kakao_id = user_info_json['id']
+    request.session['kakao_id'] = kakao_id
+    user_data['id'] = kakao_id
+    
+  if 'kakao_account' in user_info_json:
+    if 'email' in user_info_json['kakao_account']:
+      user_data['email'] = user_info_json['kakao_account']['email']
+    if 'nickname' in user_info_json['kakao_account']['profile']:
+      user_data['nickname'] = user_info_json['kakao_account']['profile']['nickname']
+      
+  print(user_data)
+    
   return JsonResponse({"user_info": user_info_response.json()})
