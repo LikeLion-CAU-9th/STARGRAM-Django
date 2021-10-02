@@ -1,3 +1,7 @@
 from django.db import models
+from django.db.models.fields import EmailField
 
-# Create your models here.
+class User_info(models.Model):
+  seq = models.AutoField(primary_key=True)
+  email = models.EmailField(max_length=255, verbose_name="user_email", blank = False)
+  nickname = models.CharField(max_length=30, verbose_name="user_name")
