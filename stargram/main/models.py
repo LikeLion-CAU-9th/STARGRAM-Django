@@ -23,7 +23,7 @@ class Photo(models.Model):
         verbose_name = 'Photo'
         verbose_name_plural = 'Photos'
     
-    Content = models.ForeignKey(
+    content = models.ForeignKey(
         Content, on_delete=models.SET_NULL, null=True, blank=True)
     image = models.ImageField(null=False, blank=False)
     description = models.TextField()
