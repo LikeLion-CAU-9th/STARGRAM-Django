@@ -18,5 +18,19 @@
     <td align="center"><a href="https://github.com/Jiwon-Jeong99"><img src="https://avatars.githubusercontent.com/u/82459123?v=4?s=100" width="200px;" alt=""/><br /><sub><b>Jiwon Jeong</b></sub></a><br /><a href="https://github.com/LikeLion-CAU-9th/DoMain/commits?author=Jiwon-Jeong99" title="Documentation">❤️‍🔥</a></td>
   </tr>
 </table>
-
+  
 </div>
+
+  ## 💻 Tech stack
+
+## Design
+Figma, AdobeXD
+
+## Front-End
+Three.js, exif.js, Kakao map API, Tmap API
+
+## Back-End
+Django, Kakao-REST-API, AWS
+
+## Communication
+Notion
