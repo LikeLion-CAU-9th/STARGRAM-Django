@@ -1,13 +1,14 @@
 from django.db import models
+from account.models import User_info
 
 # Create your models here.
-class Content(models.Model):
+class Card(models.Model):
     class Meta:
-        verbose_name = 'Content'
-        verbose_name_plural = 'Contents'
+        verbose_name = 'Card'
+        verbose_name_plural = 'Cards'
 
-    # user = models.ForeignKey(
-    #     User, on_delete=models.SET_NULL, null=True, blank=True)
+    # user_info = models.ForeignKey(
+    #     User_info, on_delete=models.SET_NULL, null=True, blank=True)
 
     date_start = models.DateField()
     date_end = models.DateField()
@@ -23,8 +24,8 @@ class Photo(models.Model):
         verbose_name = 'Photo'
         verbose_name_plural = 'Photos'
     
-    content = models.ForeignKey(
-        Content, on_delete=models.SET_NULL, null=True, blank=True)
+    card = models.ForeignKey(
+        Card, on_delete=models.SET_NULL, null=True, blank=True)
     image = models.ImageField(null=False, blank=False)
     description = models.TextField()
     
