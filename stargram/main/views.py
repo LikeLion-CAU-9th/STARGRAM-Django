@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Card, Photo
+from django.core.serializers import json
 
 def intro_view(request):
   return render(request, 'intro.html')
@@ -10,6 +11,8 @@ def upload_view(request):
 def sketch_view(request, id):
   card= Card.objects.get(id = id)
   photos = Photo.objects.filter(card=card.id)
+  # json_serializer = json.Serializer()
+  # json_photos = json_serializer.serialize(photos)
   return render(request, 'sketch.html', {'photos':photos})
 
 def add_card(request):
