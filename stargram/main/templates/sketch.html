@@ -15,11 +15,11 @@
   <div class="intro-text">
     <div class="intro-title">스캐치</div><br>
 
-        <img id="myImg" style="width:150px; height: 150px;" src="../static/images/moon.jpg">
+        <img id="myImg" style="width:150px; height: 150px;" src="{% static 'images/moon.jpg' %}">
 
     {% for photo in photos %}
         {% if photo.image %}
-        <div><img src="{{photo.image}}" alt="안뜸"></div>
+        <div><img src="{{photo.image.url}}" alt="안뜸"></div>
         {% endif %}
     {% endfor %}
 

@@ -123,7 +123,6 @@ STATIC_URL = '/static/'
 # collect static
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'main', 'static'),
-    os.path.join(BASE_DIR, 'account', 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
