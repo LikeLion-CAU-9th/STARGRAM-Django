@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Card, Photo
 
 def intro_view(request):
@@ -6,6 +6,11 @@ def intro_view(request):
 
 def upload_view(request):
   return render(request, 'upload.html')
+
+def sketch_view(request, id):
+  card= Card.objects.get(id = id)
+  photos = Photo.objects.filter(card=card.id)
+  return render(request, 'sketch.html', {'photos':photos})
 
 def add_card(request):
   
@@ -26,6 +31,6 @@ def add_card(request):
               image=image,
           )
 
-  return redirect('intro')
+  return redirect('sketch', card.id)
 
     

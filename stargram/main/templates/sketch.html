@@ -5,6 +5,7 @@
 <title>upload</title>
 <script src="{% static 'js/three.min.js' %}"></script>
 <script src="{% static 'js/starfall.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
 <link rel="stylesheet" href="{% static 'css/intro.css' %}">
 {% endblock %}
 
@@ -14,9 +15,28 @@
   <div class="intro-text">
     <div class="intro-title">스캐치</div><br>
 
-    
+        <img id="myImg" style="width:150px; height: 150px;" src="../static/images/moon.jpg">
+
+    {% for photo in photos %}
+        {% if photo.image %}
+        <div><img src="{{photo.image}}" alt="안뜸"></div>
+        {% endif %}
+    {% endfor %}
 
   </div>
   
 </div>
+
+<script>
+    var imgElem = document.getElementById("myImg");
+    imgElem.exifdata = null; // 같은 페이지 안에서 이미지가 바뀌는 경우 이전의 메타데이터 정보를 지워주어야 함.
+    EXIF.getData(imgElem, function() {
+        var make = EXIF.getTag(this, "Make"); //"Make" 항목만 확인
+        console.log( make );
+        var allMetaData = EXIF.getAllTags(this); //모든 EXIF정보
+        console.log( JSON.stringify(allMetaData, null, "\t") );
+    });
+</script>
+
 {% endblock %}
+
