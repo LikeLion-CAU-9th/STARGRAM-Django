@@ -27,6 +27,7 @@ class Photo(models.Model):
     card = models.ForeignKey(
         Card, on_delete=models.SET_NULL, null=True, blank=True)
     image = models.ImageField(upload_to="photo/", null=False, blank=False)
+    meta = models.TextField(blank=True)
     description = models.TextField()
     
     def __str__(self):

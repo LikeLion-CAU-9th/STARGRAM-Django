@@ -5,8 +5,9 @@
 <title>upload</title>
 <script src="{% static 'js/three.min.js' %}"></script>
 <script src="{% static 'js/starfall.js' %}"></script>
-<script src="{% static 'js/photo.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="{% static 'css/intro.css' %}">
 {% endblock %}
 
@@ -16,33 +17,24 @@
   <div class="intro-text">
     <div class="intro-title">스캐치</div><br>
 
-        <img id="myImg" style="width:150px; height: 150px;" src="{% static 'images/moon.jpg' %}">
-
         
+        <!-- <div class="hidden_json" id="hidden_json" >{{photos_json}}</div>
+        <div id="hidden_meta"></div> -->
+        
+
     {% for photo in photos %}
-        <!-- <div>{{photo}}</div> -->
         {% if photo.image %}
-        <div><img src="{{photo.image.url}}" alt="안뜸"></div>
+        <img class="photo" style="width:50px; height:50px;" src="{{photo.image.url}}" alt="안뜸">
         {% endif %}
     {% endfor %}
+    
+    <br>
+    <a href="{% url 'map_view' %}">map</a>
 
   </div>
   
 </div>
 
-<script>
-    let data = document.getElementById("photos").value;
-    console.log(data)
-
-    var imgElem = document.getElementById("myImg");
-    imgElem.exifdata = null; // 같은 페이지 안에서 이미지가 바뀌는 경우 이전의 메타데이터 정보를 지워주어야 함.
-    EXIF.getData(imgElem, function() {
-        var make = EXIF.getTag(this, "Make"); //"Make" 항목만 확인
-        console.log( make );
-        var allMetaData = EXIF.getAllTags(this); //모든 EXIF정보
-        console.log( JSON.stringify(allMetaData, null, "\t") );
-    });
-</script>
 
 {% endblock %}
 
